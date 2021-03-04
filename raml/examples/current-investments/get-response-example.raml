@@ -1,0 +1,73 @@
+#%RAML 1.0 NamedExample
+value: 
+  {
+    "data": {
+      "planCode": "CR",
+      "planMemberId": 1232456,
+      "investmentDefinitionId": "INV0001",
+      "canSwitch": true,
+      "investmentOptionGridRows": [{
+          "displayRank": 1,
+          "category": {
+            "description": "Core Strategy",
+            "choiceExclusiveWithinCategory": false
+          }
+        },
+        {
+          "displayRank": 2,
+          "investmentOption": {
+            "id": "BALU",
+            "description": "My Super Balanced",
+            "longDescription": "Care Super Balanced (My Super)"
+          },
+          "currentStrategy": {
+            "currentAmount": 10000.00,
+            "currentPercentage": 50.00,
+            "futurePercentage": 20,
+            "units": 4000.00,
+            "unitPrice": 2.5
+          }
+        },
+        {
+          "displayRank": 3,
+          "category": {
+            "description": "Structured Options",
+            "choiceExclusiveWithinCategory": false
+          }
+        },
+        {
+          "displayRank": 4,
+          "investmentOption": {
+            "id": "CONU",
+            "description": "Conservative",
+            "longDescription": "Care Super Conservative"
+          },
+          "currentStrategy": {
+            "currentAmount": 10000.00,
+            "currentPercentage": 50.00,
+            "futurePercentage": 80,
+            "units": 8000.00,
+            "unitPrice": 1.25
+          }
+        },
+        {
+          "displayRank": 5,
+          "investmentOption": {
+            "id": "GOLD",
+            "description": "Gold",
+            "longDescription": "Solid Gold Bullion"
+          },
+          "newStrategy": {
+            "currentPercentage": 100.00,
+            "futurePercentage": 100.00
+          }
+        }
+      ],
+      "pendingSwitches": [{
+        "transactionId": "112423453",
+        "effectiveDateHeader": "Switch effective 13/06/2017",
+        "canEdit": true,
+        "canCancel": true
+      }]
+    }
+  }

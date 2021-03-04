@@ -1,0 +1,238 @@
+#%RAML 1.0 Library
+usage:
+uses:
+  reference-data-types: common/fa-reference-data-api-types.raml
+types:
+  Lookups:
+    properties:
+      investmentChoiceTypes:  reference-data-types.CodeDescription[]
+ 
+ # not used
+  PendingSwitchScreen:
+    description: |
+      Content required by the pending switch screen
+    properties:
+      canSwitch:
+        description: |
+          True if member is allowed to create a new switch, while existing switches are pending
+        type: boolean
+      pendingSwitches: 
+        type: array
+        items: PendingSwitch
+  
+  PendingSwitch:
+    properties: 
+      canEdit: 
+        type: boolean
+        description: |
+          Only pending switches where the effective date is <= next switch effective date can be edited
+      canDelete: 
+        type: boolean
+        description: |
+          Only pending switches where the effective Date is <= next switch effective date can be deleted   
+      transactionId: string
+      pendingSwitchEffectiveDateHeader: string
+      actionColumnText: string
+      gridRows: PendingSwitchGridRow[] 
+      drawdownOption?: Drawdown
+        
+  PendingSwitchGridRow:
+    properties:
+      displayRank: number
+      category?: Category
+      investmentOption?: InvestmentOption
+      switchStrategy?: InvestmentStrategy
+      
+  SplitOption:
+    properties: 
+      investmentOption: InvestmentOption
+      percentage: number
+      
+  BalanceSplit:
+    properties: 
+      effectiveDate: date-only
+      investmentOptions: SplitOption[]
+      
+  FutureBalance:
+    properties: 
+      effectiveDate: date-only
+      investmentOptions: SplitOption[]
+      investmentSetId?: string
+        
+  DrawdownOption:
+    properties: 
+      code: string
+      description: string
+      columnHeader: string
+      columnText?: string
+        
+  Drawdown:
+    properties: 
+      effectiveDate: datetime
+      drawdownMethod: DrawdownOption
+      investmentOptions: InvestmentOptions
+        
+  InvestmentOption:
+    properties: 
+      id: string
+      description: string
+      longDescription: string
+
+  InvestmentOptions:      
+    type: array
+    items:
+      properties: 
+        investmentOption: InvestmentOption
+        heirarchy?: number
+      
+  ExistingBalanceOption:
+    properties: 
+      investmentOption:
+        properties: 
+          id: string
+          description: string
+          longDescription: string
+      balance: number
+     
+  NewSwitch: NewOrUpdateSwitch
+
+  UpdateSwitch: NewOrUpdateSwitch
+  
+  NewOrUpdateSwitch:
+    properties: 
+      balanceSplit?: CreateSplitOption[]
+      futureTransactions?: FutureTransaction[]
+      drawdown?:
+        properties: 
+          drawdownMethod: string
+          investmentOptions?: CreateSplitOption[]            
+
+  FutureTransaction:
+    properties:
+      investmentOptionId: string
+      investmentSetId?: string
+      percentage?: number
+      hierarchy?: number
+
+  CreateSplitOption:
+    properties:
+      investmentOptionId: string
+      percentage: number
+      
+  Permission:
+    properties: 
+      key: string
+      Actions: 
+        properties:
+          get?: boolean
+          put?: boolean
+          post?: boolean
+          delete?: boolean
+            
+  Category:
+    properties:
+      description: string
+      choiceExclusiveWithinCategory: boolean
+        
+  InvestmentStrategy:  
+    properties:
+        currentAmount?: number
+        currentPercentage?: number
+        futurePercentage?: number
+        futureHeirarchy?: number
+        units?: number
+        unitPrice?: number
+        balanceSplitAtPercentage?: number
+        investmentSetId?: string
+          
+  InvestmentSet:
+    properties:
+        id: 
+          description: |
+            Investment Set Id to pass to switch, whens switching to investment set.
+          type: string
+        description: string
+        toolTip: string
+        isMutuallyExclusive: 
+          description: |
+            If true, show life stages as radio Bbtton. Disable all columns and pre-populate with initial switch value if selected.
+            If false, allow user to enter percentages for normal and life stages only options. 
+          type: boolean
+        initialStrategy?:
+          description: |
+            Current percentage and future percentage values to pre-populate, when switching to investment options  
+          type: InvestmentStrategy
+
+
+  InvestmentOptionScreen:
+    properties:
+      planCode: string
+      investmentDefinitionId: string
+      planMemberId: reference-data-types.Long
+      nextSwitchDateHeader?:
+        description: |
+          Used as combined header if current switch effective date = future effective date.
+          or for current only otherwise
+          Merges switch date header resource, with switch effective date
+        type: string
+      nextFutureSwitchDateHeader?:
+        description: |
+          Populated and used as header forFuture columns, if balance switch effective date <> future effective date.
+          Merges future switch date header resource, with future switch effective date
+        type: string
+      canSwitch: 
+        description: |
+          If true, show option to create a new investment switch. Combines permission with logic based on 
+          flags from aaspire
+        type: boolean
+      restrictions?: InvestmentRestrictions
+      currentDrawdown?: DrawdownOption
+      pendingDrawdown?: DrawdownOption
+      investmentOptionGridRows: InvestmentOptionGridRow []
+      pendingSwitches?: PendingSwitchListing[]
+      
+  InvestmentRestrictions:
+    properties:
+      nextChoiceDate: date-only
+      nextSwitchDate: date-only
+      mustBalanceMatchMIC: 
+        type: boolean
+        description: |
+          If true, Only display one combined edit box, and use value for both current and future
+      
+          
+  PendingSwitchListing:
+    properties:
+      transactionId: string
+      effectiveDateHeader:
+        description: |
+          Used as combined header if current switch effective date = future effective date.
+          or for current only otherwise
+          Merges switch date header resource, with switch effective date
+        type: string
+      canEdit: 
+        description: |
+          Indicates whether this switch can be edited. Combines permission, with business logic, that only allows the most recent pending switch, with an effectiveDate == nextSwitchDate, to be edited
+        type: boolean
+      canCancel: 
+        description: |
+          Indicates whether this switch can be cancelled. Combines permission, with business logic, that only allows the most recent pending switch, with an effectiveDate == nextSwitchDate, to be edited
+        type: boolean
+    
+  InvestmentOptionGridRow:
+    properties:
+      displayRank: integer
+      category?: Category
+      investmentOption?: InvestmentOption
+      currentStrategy?: InvestmentStrategy
+      newStrategy?: InvestmentStrategy
+
+  PostInvestmentSwitch:
+    properties:
+      transactionId: integer
+      effectiveDate: string
+      
+  PostSwitchResponse:
+    properties:
+      investmentSwitches?: PostInvestmentSwitch[]
+        

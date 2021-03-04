@@ -1,0 +1,12 @@
+#%RAML 1.0 Library
+usage:
+types:  
+  ApiResponse:
+    properties:
+      errors?: Error[]
+      message?: string
+  Error:
+    properties: 
+      code: string
+      type?: string
+      description?: string

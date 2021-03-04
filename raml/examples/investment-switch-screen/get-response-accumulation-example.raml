@@ -1,0 +1,77 @@
+#%RAML 1.0 NamedExample
+value:
+  {
+    "data": {
+      "planCode": "CR",
+      "planMemberId": 666777666,
+      "investmentDefinitionId": "INV0001",
+      "canSwitch": true,
+      "nextSwitchDateHeader": "Next Balance Switch Effective 08/03/2017",
+      "restrictions": {
+        "nextChoiceDate": "2017-03-01",
+        "nextSwitchDate": "2017-03-02",
+        "mustBalanceMatchMIC": false
+      },
+      "investmentOptionGridRows": [{
+          "displayRank": 1,
+          "category": {
+            "description": "Core Strategy",
+            "choiceExclusiveWithinCategory": false
+          }
+        }, {
+          "displayRank": 2,
+          "investmentOption": {
+            "id": "BALU",
+            "description": "Balanced MySuper",
+            "longDescription": "Care Super Balanced MySuper"
+          },
+          "currentStrategy": {
+            "currentAmount": 1000,
+            "currentPercentage": 100,
+            "futurePercentage": 100
+          }
+        }, {
+          "displayRank": 3,
+          "category": {
+            "description": "Structured Options",
+            "choiceExclusiveWithinCategory": false
+          }
+        }, {
+          "displayRank": 4,
+          "investmentOption": {
+            "id": "CONU",
+            "description": "Conservative",
+            "longDescription": "Care Super Conservative"
+          }
+        }, {
+          "displayRank": 5,
+          "investmentOption": {
+            "id": "CASH",
+            "description": "Cash",
+            "longDescription": "Care Super Cash"
+          }
+        }, {
+          "displayRank": 6,
+          "investmentOption": {
+            "id": "GOLD",
+            "description": "Gold",
+            "longDescription": "Solid Gold Bullion"
+          }
+        }, {
+          "displayRank": 7,
+          "investmentOption": {
+            "id": "SHRU",
+            "description": "Australian Shares",
+            "longDescription": "Care Super Australian Shares"
+          }
+        }, {
+          "displayRank": 8,
+          "investmentOption": {
+            "id": "INFR",
+            "description": "Infrastructure",
+            "longDescription": "Care Super International Infrastructure"
+          }
+        }
+      ]      
+    }
+  }

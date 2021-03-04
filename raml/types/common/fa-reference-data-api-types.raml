@@ -1,0 +1,40 @@
+#%RAML 1.0 Library
+usage: 
+types: 
+  IdDescription:
+    properties:
+      id: string
+      description?: string
+      
+  CodeDescription:
+    properties:
+      code: string
+      description?: string
+      
+  IdCodeDescription:
+    properties:
+      id: integer
+      code: string
+      description?: string
+      
+  MemberAccount:
+    type: IdDescription
+    
+  Title:
+    type: CodeDescription
+    
+  TransactionTypeGroup:
+    type: IdCodeDescription
+    
+  TransactionType:
+    type: CodeDescription
+    
+#### added for member-investments-widget
+  Long:
+    type: integer
+    format: int64
+    minimum: 1
+    
+  InvestmentChoiceType:
+    type: string
+    enum: [ PERCENTAGE, HIERARCHY, PRORATA, HIGHESTBALANCE ]        

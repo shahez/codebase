@@ -1,0 +1,62 @@
+#%RAML 1.0
+---
+title: Ascendon System API
+version: 1.0
+protocols: [ HTTPS ]
+#baseUri: https://api-
+mediaType: application/json
+uses:
+  # Base API types
+  base-api-types: types/common/base-api-types.raml
+  # Common API types
+  authorization-management-api-types: types/common/authorization-management-api-types.raml
+  resource-management-api-types: types/common/resource-management-api-types.raml
+  fa-reference-data-types: types/common/fa-reference-data-api-types.raml
+  # API types
+  # Traits
+  generic-response-traits: traits/generic-response-traits.raml
+
+/subscriberManagement:
+  /retrieveSubscriber:
+    displayName: retrieveSubscriber
+    get:
+      description: |
+        retrieveSubscriber
+      is:  [generic-response-traits.standardHeaders,generic-response-traits.genericResponses]    
+  /disconnectSubscriber:
+    displayName: retrieveSubscriber
+    get:
+      description: |
+        retrieveSubscriber
+      is:  [generic-response-traits.standardHeaders,generic-response-traits.genericResponses]         
+  /retrieveConvergentBillerSubscriberSummary:
+    displayName: retrieveSubscriber
+    get:
+      description: |
+        retrieveSubscriber
+      is:  [generic-response-traits.standardHeaders,generic-response-traits.genericResponses]           
+  /createConvergentBillerAdjustment:
+    displayName: retrieveSubscriber
+    get:
+      description: |
+        retrieveSubscriber
+      is:  [generic-response-traits.standardHeaders,generic-response-traits.genericResponses]   
+/security:
+  /retrieveUser:   
+    displayName: retrieveSubscriber
+    get:
+      description: |
+        retrieveSubscriber
+      is:  [generic-response-traits.standardHeaders,generic-response-traits.genericResponses]
+  /searchUsers:   
+    displayName: retrieveSubscriber
+    get:
+      description: |
+        retrieveSubscriber
+      is:  [generic-response-traits.standardHeaders,generic-response-traits.genericResponses]    
+  /retrieveSecurityAttributesForRoles:   
+    displayName: retrieveSubscriber
+    get:
+      description: |
+        retrieveSubscriber
+      is:  [generic-response-traits.standardHeaders,generic-response-traits.genericResponses]    

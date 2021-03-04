@@ -1,0 +1,56 @@
+#%RAML 1.0 NamedExample
+value:
+  {
+    "data": {
+      "planCode": "CR",
+      "planMemberId": 1123214,
+      "investmentDefinitionId": "INV1000",
+      "canSwitch": true,
+      "nextSwitchDateHeader": "Next Switch Effective 15/06/2017",
+      "restrictions": {
+        "nextSwitchDate": "2017-06-15",
+        "nextChoiceDate": "2017-06-15",
+        "mustBalanceMatchMIC": false
+      },
+      "investmentOptionGridRows": [{
+          "displayRank": 1,
+          "category": {
+            "description": "Core Strategy",
+            "choiceExclusiveWithinCategory": false
+          }
+        },
+        {
+          "displayRank": 2,
+          "investmentOption": {
+            "id": "BALU",
+            "description": "My Super Balanced",
+            "longDescription": "My Super Balance"
+          },
+          "currentStrategy": {
+            "currentPercentage": 100,
+            "futurePercentage": 100
+          }
+        },
+        {
+          "displayRank": 3,
+          "category": {
+            "description": "Structured Options",
+            "choiceExclusiveWithinCategory": false
+          }
+        },
+        {
+          "displayRank": 4,
+          "investmentOption": {
+            "id": "GROW",
+            "description": "Life Stages Growth",
+            "longDescription": "Life Stages Growth"
+          },
+          "newStrategy": {
+            "currentPercentage": 100,
+            "futurePercentage": 100,
+            "investmentSetId": "CARELS"
+          }
+        }
+      ]
+    }
+  }

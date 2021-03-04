@@ -1,0 +1,51 @@
+#%RAML 1.0 NamedExample
+# member-investments-widget-api-types.PendingSwitch
+value:
+  {
+    "data": {
+      "canEdit": true,
+      "canDelete": false,
+      "pendingSwitchEffectiveDateHeader": "Next Balance Switch Effective 08/03/2017",
+      "transactionId": "123123132",
+      "actionColumnText": "Edit",
+      "gridRows": [{
+        "displayRank": 1,
+        "category": {
+          "description": "Core Strategy",
+          "choiceExclusiveWithinCategory": false
+        }
+      },
+      {
+        "displayRank": 2,
+        "investmentOption": {
+          "id": "BALU",
+          "description": "Balanced MySuper",
+          "longDescription": "Care Super Balanced MySuper"
+        }
+      },
+      {
+        "displayRank": 3,
+        "switchStrategy": {
+          "currentPercentage": 50,
+          "futurePercentage": 20
+        }
+      }],
+      "drawdownOption": {
+        "effectiveDate": "2002-10-02T10:00:00Z",
+        "drawdownMethod": {
+          "code": "HIGHESTBALANCE",
+          "description": "Highest Balance",
+          "columnHeader": "Payment Priority",
+          "columnText": "Payments will be drawn from option with highest balance"
+        },
+        "investmentOptions": [{
+          "investmentOption": {
+            "id": "GOLD",
+            "description": "Gold",
+            "longDescription": "Solid Gold Bullion"
+          },
+          "heirarchy": 1
+        }]
+      }
+    }
+  }

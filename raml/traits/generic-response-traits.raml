@@ -1,0 +1,88 @@
+#%RAML 1.0 Library
+uses:
+  # Base API types
+  base-api-types: ../types/common/base-api-types.raml
+traits:
+  standardHeaders:
+    headers:
+      X-Correlation-Id?:
+        type: string
+        #pattern: ^[0-9a-f]{8}-[0-9a-f]{4}-[1-5][0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$|^$
+
+  genericBadRequest:
+    responses:
+      400:
+        description: |
+          Bad request
+        body:
+          application/json:
+            type: base-api-types.ApiResponse
+            example:
+              errors: [
+                {
+                  code: "E1",
+                  type: "field.name",
+                  description: "Too long"
+                },
+                {
+                  code: "W1",
+                  type: "field.name",
+                  description: "Does not conform to ISO1231"
+                },
+              ]
+
+  genericResponses:
+    responses:
+      401:
+        description: |
+          Not authorized
+        body:
+          application/json:
+            type: base-api-types.ApiResponse
+            example:
+              message: "Not authorized"
+      403:
+        description: |
+          Forbidden
+        body:
+          application/json:
+            type: base-api-types.ApiResponse
+            example:
+              message: "Forbidden"
+      404:
+        description: |
+          Not found
+        body:
+          application/json:
+            type: base-api-types.ApiResponse
+            
+  genericNotAuthorized:
+    responses:
+      401:
+        description: |
+          Not authorized
+        body:
+          application/json:
+            type: base-api-types.ApiResponse
+            example:
+              message: "Not authorized"
+
+  genericForbidden:
+    responses:
+      403:
+        description: |
+          Forbidden
+        body:
+          application/json:
+            type: base-api-types.ApiResponse
+            example:
+              message: "Forbidden"
+
+  genericNotFound:
+    responses:
+      404:
+        description: |
+          Not found
+        body:
+          application/json:
+            type: base-api-types.ApiResponse
